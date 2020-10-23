@@ -1,0 +1,42 @@
+const json=fetch("https://rickandmortyapi.com/api/character/");
+
+json.then((respuesta)=>{
+  return respuesta.json();
+}).then((jsonData)=>{
+  jsonData["results"].forEach(ContEP)
+  console.log(Mayor(Lista));
+  //console.log("Lo sentimos " + a[1].nombre)
+
+})
+interface NEpisodios{
+  nombre:string,
+  NumerosEpisodios:number
+}
+const Lista:NEpisodios[]=[]
+
+const ContEP = (obj:any):void=>{
+
+  const Personaje:NEpisodios={
+      nombre:obj["name"],
+      NumerosEpisodios:obj["episode"].length
+  }
+  Lista.push(Personaje)
+}
+const Mayor=(arr:NEpisodios[]):NEpisodios[]=>{
+  const Fin:NEpisodios[]=[]
+  let m:number=0;
+  arr.forEach((i)=>{
+    if(m<i["NumerosEpisodios"] ){
+      m=i["NumerosEpisodios"]
+      Fin.splice(0,(Fin.length-1))
+      Fin.push(i);
+    }else{
+      if(m==i["NumerosEpisodios"]){
+      
+      Fin.push(i);
+    }
+    }
+  
+  })
+  return Fin;
+}
