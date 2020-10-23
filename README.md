@@ -1,2 +1,1 @@
-# sassa
-# Programacion-Sistemas-Internet
+# Practica
